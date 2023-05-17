@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:sprint1/UI/carrito_total.dart';
+import 'package:sprint1/UI/resumen_productos.dart';
 
 class FinalPage extends StatefulWidget {
   const FinalPage({super.key});
@@ -9,9 +11,6 @@ class FinalPage extends StatefulWidget {
 }
 
 class _FinalPageState extends State<FinalPage> {
-  final List<String> items = List<String>.generate(100, (i) => "Item $i");
-  String selectedItem = "Item 0";
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -23,95 +22,13 @@ class _FinalPageState extends State<FinalPage> {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: <Widget>[
                 Text(
-                  'Dirección',
+                  'Facturacion',
                   style: TextStyle(
                     fontSize: 18,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-                SizedBox(height: 10),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    Expanded(
-                      child: Container(
-                        decoration: BoxDecoration(
-                          color: Color.fromARGB(255, 29, 228, 36),
-                          borderRadius: BorderRadius.circular(3.0),
-                        ),
-                        child: DropdownButton(
-                          underline: SizedBox(),
-                          value: selectedItem,
-                          dropdownColor: Colors.green,
-                          onChanged: (String? value) {
-                            setState(() {
-                              selectedItem = value!;
-                            });
-                          },
-                          items: items.map((String item) {
-                            return DropdownMenuItem<String>(
-                              value: item,
-                              child: Text(item),
-                            );
-                          }).toList(),
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
                 SizedBox(height: 20),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Expanded(
-                      child: ElevatedButton.icon(
-                        onPressed: () {},
-                        icon: Icon(Icons.delete, color: Colors.orange),
-                        label: Text(''),
-                        style: ButtonStyle(
-                          padding: MaterialStateProperty.all(
-                            EdgeInsets.symmetric(vertical: 16),
-                          ),
-                          backgroundColor:
-                              MaterialStateProperty.all(Colors.white),
-                          shape: MaterialStateProperty.all(
-                            RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(8),
-                              side: BorderSide(
-                                color: Colors.orange,
-                                width: 2,
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                    SizedBox(width: 10),
-                    Expanded(
-                      child: ElevatedButton.icon(
-                        onPressed: () {},
-                        icon: Icon(Icons.check, color: Colors.orange),
-                        label: Text(''),
-                        style: ButtonStyle(
-                          padding: MaterialStateProperty.all(
-                            EdgeInsets.symmetric(vertical: 16),
-                          ),
-                          backgroundColor:
-                              MaterialStateProperty.all(Colors.white),
-                          shape: MaterialStateProperty.all(
-                            RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(8),
-                              side: BorderSide(
-                                color: Colors.orange,
-                                width: 2,
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
                 Row(
                   children: [
                     Padding(
@@ -139,7 +56,7 @@ class _FinalPageState extends State<FinalPage> {
                   child: Padding(
                     padding: const EdgeInsets.all(16.0),
                     child: Text(
-                      'Nombre:   Cristian \nDirección:   Calle falsa 123 \nTelefono:   123456789\nObservaciones:   \nAl ado de la cancha de futbol',
+                      'Nombre:   ${Get.arguments[0]} \nDirección:   ${Get.arguments[2]} \nTelefono:   ${Get.arguments[1]}\nObservaciones: \n${Get.arguments[3]} ',
                       style: TextStyle(fontSize: 15, fontFamily: 'RoboReg'),
                     ),
                   ),
@@ -151,104 +68,8 @@ class _FinalPageState extends State<FinalPage> {
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-                Padding(
-                  padding:
-                      EdgeInsets.only(bottom: 10, top: 20, left: 23, right: 20),
-                  child: Row(
-                    children: <Widget>[
-                      ClipRRect(
-                        borderRadius: BorderRadius.all(Radius.circular(100)),
-                        child: Image.asset(
-                          "../../assets/images/testimg.jpeg",
-                          height: 50,
-                          width: 50,
-                          fit: BoxFit.cover,
-                        ),
-                      ),
-                      SizedBox(width: 10),
-                      Expanded(
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: <Widget>[
-                            Text(
-                              'Producto',
-                              style: TextStyle(fontSize: 18),
-                            ),
-                          ],
-                        ),
-                      ),
-                      Text(
-                        'Cantidad: 1',
-                        style: TextStyle(fontSize: 16),
-                      ),
-                    ],
-                  ),
-                ),
-                Padding(
-                  padding:
-                      EdgeInsets.only(bottom: 10, top: 20, left: 23, right: 20),
-                  child: Row(
-                    children: <Widget>[
-                      ClipRRect(
-                        borderRadius: BorderRadius.all(Radius.circular(100)),
-                        child: Image.asset(
-                          "../../assets/images/testimg.jpeg",
-                          height: 50,
-                          width: 50,
-                          fit: BoxFit.cover,
-                        ),
-                      ),
-                      SizedBox(width: 10),
-                      Expanded(
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: <Widget>[
-                            Text(
-                              'Producto',
-                              style: TextStyle(fontSize: 18),
-                            ),
-                          ],
-                        ),
-                      ),
-                      Text(
-                        'Cantidad: 1',
-                        style: TextStyle(fontSize: 16),
-                      ),
-                    ],
-                  ),
-                ),
-                Padding(
-                  padding:
-                      EdgeInsets.only(bottom: 10, top: 20, left: 23, right: 20),
-                  child: Row(
-                    children: <Widget>[
-                      ClipRRect(
-                        borderRadius: BorderRadius.all(Radius.circular(100)),
-                        child: Image.asset(
-                          "../../assets/images/testimg.jpeg",
-                          height: 50,
-                          width: 50,
-                          fit: BoxFit.cover,
-                        ),
-                      ),
-                      SizedBox(width: 10),
-                      Expanded(
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: <Widget>[
-                            Text(
-                              'Producto',
-                              style: TextStyle(fontSize: 18),
-                            ),
-                          ],
-                        ),
-                      ),
-                      Text(
-                        'Cantidad: 1',
-                        style: TextStyle(fontSize: 16),
-                      ),
-                    ],
-                  ),
+                SizedBox(
+                  child: CartScreen(),
                 ),
                 Text(
                   'Precio total',
@@ -271,12 +92,8 @@ class _FinalPageState extends State<FinalPage> {
                   child: Align(
                     alignment: Alignment.center,
                     child: Padding(
-                      padding: const EdgeInsets.all(16.0),
-                      child: Text(
-                        '15.000',
-                        style: TextStyle(fontSize: 18.0),
-                      ),
-                    ),
+                        padding: const EdgeInsets.all(16.0),
+                        child: CartTotal()),
                   ),
                 ),
                 Row(

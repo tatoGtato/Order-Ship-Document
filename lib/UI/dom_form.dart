@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'final_page.dart';
 import 'first_page.dart';
+import 'package:sprint1/services/firebase_services.dart';
 
 class Domicilios extends StatefulWidget {
   const Domicilios({super.key});
@@ -11,6 +12,11 @@ class Domicilios extends StatefulWidget {
 }
 
 class _DomiciliosState extends State<Domicilios> {
+  TextEditingController nameController = TextEditingController(text: "");
+  TextEditingController phoneController = TextEditingController(text: "");
+  TextEditingController addressController = TextEditingController(text: "");
+  TextEditingController observationsController =
+      TextEditingController(text: "");
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -21,20 +27,20 @@ class _DomiciliosState extends State<Domicilios> {
               Get.to(FistPage());
             }),
         centerTitle: true,
-        title: Text("Escribir datos",
+        title: const Text("Escribir datos",
             style: TextStyle(
                 fontFamily: 'RoboBol',
                 color: Color.fromRGBO(255, 112, 2, 1),
                 fontWeight: FontWeight.bold)),
         backgroundColor: Colors.white,
         shadowColor: Colors.transparent,
-        shape: Border(
+        shape: const Border(
             bottom: BorderSide(
                 color: Color.fromARGB(255, 233, 224, 224), width: 2.5)),
       ),
       body: Column(
         children: [
-          Row(
+          const Row(
             children: [
               Padding(
                   padding: EdgeInsets.all(20),
@@ -51,11 +57,12 @@ class _DomiciliosState extends State<Domicilios> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Padding(
-                  padding: EdgeInsets.all(10),
+                  padding: const EdgeInsets.all(10),
                   child: SizedBox(
                     width: 400.0,
                     child: IntrinsicWidth(
                       child: TextFormField(
+                        controller: nameController,
                         decoration: InputDecoration(
                           hintText: "Escriba su nombre",
                           labelText: "Nombre",
@@ -63,14 +70,14 @@ class _DomiciliosState extends State<Domicilios> {
                           labelStyle: const TextStyle(
                               color: Color.fromRGBO(255, 112, 2, 1)),
                           enabledBorder: OutlineInputBorder(
-                            borderSide: BorderSide(
+                            borderSide: const BorderSide(
                                 width: 2.5,
                                 color: Color.fromRGBO(
                                     255, 112, 2, 1)), //<-- SEE HERE
                             borderRadius: BorderRadius.circular(5),
                           ),
                           focusedBorder: OutlineInputBorder(
-                            borderSide: BorderSide(
+                            borderSide: const BorderSide(
                                 width: 2.5,
                                 color: Color.fromRGBO(
                                     255, 112, 2, 1)), //<-- SEE HERE
@@ -91,6 +98,7 @@ class _DomiciliosState extends State<Domicilios> {
                     width: 400.0,
                     child: IntrinsicWidth(
                       child: TextFormField(
+                        controller: phoneController,
                         decoration: InputDecoration(
                           hintText: "Escriba su teléfono",
                           labelText: "Teléfono",
@@ -98,14 +106,14 @@ class _DomiciliosState extends State<Domicilios> {
                           labelStyle: const TextStyle(
                               color: Color.fromRGBO(255, 112, 2, 1)),
                           enabledBorder: OutlineInputBorder(
-                            borderSide: BorderSide(
+                            borderSide: const BorderSide(
                                 width: 2.5,
                                 color: Color.fromRGBO(
                                     255, 112, 2, 1)), //<-- SEE HERE
                             borderRadius: BorderRadius.circular(5),
                           ),
                           focusedBorder: OutlineInputBorder(
-                            borderSide: BorderSide(
+                            borderSide: const BorderSide(
                                 width: 2.5,
                                 color: Color.fromRGBO(
                                     255, 112, 2, 1)), //<-- SEE HERE
@@ -121,11 +129,12 @@ class _DomiciliosState extends State<Domicilios> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Padding(
-                  padding: EdgeInsets.all(10),
+                  padding: const EdgeInsets.all(10),
                   child: SizedBox(
                     width: 400.0,
                     child: IntrinsicWidth(
                       child: TextFormField(
+                        controller: addressController,
                         decoration: InputDecoration(
                           hintText: "Escriba su dirección",
                           labelText: "Dirección",
@@ -133,14 +142,14 @@ class _DomiciliosState extends State<Domicilios> {
                           labelStyle: const TextStyle(
                               color: Color.fromRGBO(255, 112, 2, 1)),
                           enabledBorder: OutlineInputBorder(
-                            borderSide: BorderSide(
+                            borderSide: const BorderSide(
                                 width: 2.5,
                                 color: Color.fromRGBO(
                                     255, 112, 2, 1)), //<-- SEE HERE
                             borderRadius: BorderRadius.circular(5),
                           ),
                           focusedBorder: OutlineInputBorder(
-                            borderSide: BorderSide(
+                            borderSide: const BorderSide(
                                 width: 2.5,
                                 color: Color.fromRGBO(
                                     255, 112, 2, 1)), //<-- SEE HERE
@@ -161,6 +170,7 @@ class _DomiciliosState extends State<Domicilios> {
                     width: 400.0,
                     child: IntrinsicWidth(
                       child: TextFormField(
+                        controller: observationsController,
                         decoration: InputDecoration(
                           hintText: "Observaciones para el domiciliario",
                           labelText: "Observaciones",
@@ -168,14 +178,14 @@ class _DomiciliosState extends State<Domicilios> {
                           labelStyle: const TextStyle(
                               color: Color.fromRGBO(255, 112, 2, 1)),
                           enabledBorder: OutlineInputBorder(
-                            borderSide: BorderSide(
+                            borderSide: const BorderSide(
                                 width: 2.5,
                                 color: Color.fromRGBO(
                                     255, 112, 2, 1)), //<-- SEE HERE
                             borderRadius: BorderRadius.circular(5),
                           ),
                           focusedBorder: OutlineInputBorder(
-                            borderSide: BorderSide(
+                            borderSide: const BorderSide(
                                 width: 2.5,
                                 color: Color.fromRGBO(
                                     255, 112, 2, 1)), //<-- SEE HERE
@@ -215,7 +225,7 @@ class _DomiciliosState extends State<Domicilios> {
                           border:
                               Border.all(color: Color.fromRGBO(255, 112, 2, 1)),
                           borderRadius: BorderRadius.circular(2)),
-                      child: Text("info")))
+                      child: Text("${Get.arguments}")))
             ],
           ),
           Row(
@@ -228,7 +238,14 @@ class _DomiciliosState extends State<Domicilios> {
                     style: ElevatedButton.styleFrom(
                         backgroundColor: Color.fromARGB(239, 58, 58, 150)),
                     onPressed: () {
-                      Get.to(FinalPage());
+                      addClientData(nameController.text, phoneController.text,
+                          addressController.text, observationsController.text);
+                      Get.to(FinalPage(), arguments: [
+                        nameController.text,
+                        phoneController.text,
+                        addressController.text,
+                        observationsController.text
+                      ]);
                     },
                     child: Text(
                       "PEDIR DOMICILIO",
