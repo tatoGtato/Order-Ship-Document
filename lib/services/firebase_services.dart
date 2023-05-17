@@ -2,9 +2,9 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import '../Models/product_model.dart';
 
-class FirestoreDB {
-  final FirebaseFirestore _firebaseFirestore = FirebaseFirestore.instance;
+final FirebaseFirestore _firebaseFirestore = FirebaseFirestore.instance;
 
+class FirestoreDB {
   Stream<List<Producto>> getAllProductos() {
     return _firebaseFirestore.collection('Platos').snapshots().map(
       (Snapshot) {
@@ -12,4 +12,14 @@ class FirestoreDB {
       },
     );
   }
+}
+
+Future<void> addClientData(
+    String name, String phone, String address, String obs) async {
+  await _firebaseFirestore.collection('datos').add({
+    "Direccion": address,
+    "Nombre": name,
+    "Observaciones": obs,
+    "Telefono": phone
+  });
 }
